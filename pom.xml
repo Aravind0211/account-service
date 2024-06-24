@@ -69,18 +69,19 @@
 			</plugin>
 			<!-- Lombok Maven Plugin -->
 			<plugin>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok-maven-plugin</artifactId>
-				<version>1.18.22</version> <!-- Replace with the latest version -->
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>delombok</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok-maven-plugin</artifactId>
+    <version>1.18.22</version>
+    <executions>
+        <execution>
+            <phase>generate-sources</phase>
+            <goals>
+                <goal>delombok</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+
 		</plugins>
 	</build>
 </project>
