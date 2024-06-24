@@ -1,88 +1,51 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
-    <modelVersion>4.0.0</modelVersion>
-    
-    <parent>
-        <groupId>pl.piomin</groupId>
-        <artifactId>sample-spring-microservices</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    
-    <groupId>pl.piomin</groupId>
-    <artifactId>account-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Add more dependencies as needed -->
-    </dependencies>
-    
-    <build>
-        <finalName>account-service</finalName>
-        
-        <plugins>
-            <!-- Spring Boot Maven Plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>pl.piomin.microservices.account.AccountServiceApplication</mainClass>
-                    <addResources>true</addResources>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            
-            <!-- Maven Compiler Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                </configuration>
-            </plugin>
-            
-            <!-- CycloneDX Maven Plugin -->
-            <plugin>
-                <groupId>org.cyclonedx</groupId>
-                <artifactId>cyclonedx-maven-plugin</artifactId>
-                <version>4.6.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>makeBom</goal>
-                        </goals>
-                        <configuration>
-                            <projectType>application</projectType>
-                            <schemaVersion>1.5</schemaVersion>
-                            <outputDirectory>${project.build.directory}/reports</outputDirectory>
-                            <outputName>bom</outputName>
-                            <outputFormat>xml</outputFormat>
-                            <includeBomSerialNumber>false</includeBomSerialNumber>
-                            <includeLicenseText>false</includeLicenseText>
-                            <componentVersion>2.0.0</componentVersion>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            
-            <!-- Add more plugins as needed -->
-            
-        </plugins>
-    </build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>pl.piomin</groupId>
+		<artifactId>sample-spring-microservices</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>account-service</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>account-service</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>pl.piomin.microservices.account.AccountServiceApplication</mainClass>
+					<addResources>true</addResources>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
