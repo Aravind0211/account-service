@@ -45,20 +45,28 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- CycloneDX Maven Plugin Configuration -->
 			<plugin>
 				<groupId>org.cyclonedx</groupId>
 				<artifactId>cyclonedx-maven-plugin</artifactId>
-				<version>2.7.4</version> <!-- Use the latest stable version -->
+				<version>2.7.5</version> <!-- Use the appropriate plugin version -->
 				<executions>
 					<execution>
-						<phase>verify</phase>
+						<id>create-bom</id>
 						<goals>
 							<goal>makeAggregateBom</goal>
 						</goals>
+						<phase>verify</phase>
+						<configuration>
+							<schemaVersion>1.5</schemaVersion>
+							<outputName>bom</outputName>
+							<outputFormat>xml</outputFormat>
+							<includeBomSerialNumber>false</includeBomSerialNumber>
+							<includeLicenseText>false</includeLicenseText>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
