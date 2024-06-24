@@ -61,7 +61,7 @@
             <plugin>
                 <groupId>org.cyclonedx</groupId>
                 <artifactId>cyclonedx-maven-plugin</artifactId>
-                <version>INSERT_PLUGIN_VERSION_HERE</version>
+                <version>4.6.1</version>
                 <executions>
                     <execution>
                         <goals>
